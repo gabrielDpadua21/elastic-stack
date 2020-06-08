@@ -30,28 +30,28 @@ services:
                 networks: 
                         - elastic
 
-        logstash:
-                build: 
-                        context: ./logstash
-                ports: 
-                        - 5000:5000/tcp
-                        - 5000:5000/udp
-                        - 9600:9600
-                environment: 
-                        LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-                networks: 
-                        - elastic
-                depends_on: 
-                        - elastic-01
+        # logstash:
+        #         build: 
+        #                 context: ./logstash
+        #         ports: 
+        #                 - 5000:5000/tcp
+        #                 - 5000:5000/udp
+        #                 - 9600:9600
+        #         environment: 
+        #                 LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        #         networks: 
+        #                 - elastic
+        #         depends_on: 
+        #                 - elastic-01
 
-        filebeat:
-                build: 
-                        context: ./filebeat
-                networks: 
-                        - elastic
-                depends_on: 
-                        - elastic-01
-                        - logstash
+        # filebeat:
+        #         build: 
+        #                 context: ./filebeat
+        #         networks: 
+        #                 - elastic
+        #         depends_on: 
+        #                 - elastic-01
+        #                 - logstash
 
 networks: 
         elastic:
